@@ -14,20 +14,20 @@ class Db
     {
         try {
             $this->dns = "mysql:host=$this->server;dbname=$this->dbName";
-            $this->con = new PDO("$this->dns,$this->userName,$this->pwd");
-            return $this->con;
+            $this->con = new PDO($this->dns,$this->userName,$this->pwd);
         } catch (PDOException $e) {
             return $e->getMessage();
         }
     }
 
-//    public function getCon(){
-//        return $this->con;
-//    }
+    public function getCon(){
+        return $this->con;
+    }
 
     public function prepare($sql){
         try {
-            return $this->con->prepare($sql);
+            $stmt = $this->con->prepare($sql);
+            return $stmt;
         }catch (PDOException $e){
             return $e->getMessage();
         }

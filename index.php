@@ -1,3 +1,9 @@
+<?php
+
+require_once "inc/actions.php";
+
+?>
+
 <html lang="en">
 
 <head>
@@ -229,11 +235,11 @@
 
 </table>
 <hr />
-<form>
-    <input type="text" name="" value="نام" id="">
-    <input type="text" name="" value="سن" id="">
-    <input type="text" name="" value="رشته تحصیلی" id="">
-    <input type="submit" value="وارد کردن">
+<form action="index.php" method="post">
+    <input type="text" name="name" placeholder="نام">
+    <input type="text" name="age" placeholder="سن">
+    <input type="text" name="field" placeholder="رشته تحصیلی">
+    <input type="submit" name="addStudent" value="وارد کردن">
 </form>
 <hr />
 
