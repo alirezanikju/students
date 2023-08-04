@@ -1,0 +1,9 @@
+@font-face {
+    font-family: text;
+    src: url(./Nunito-Regular.ttf);
+}
+
+@font-face {
+    font-family: number;
+    src: url(./RobotoMono-Light.ttf);
+}

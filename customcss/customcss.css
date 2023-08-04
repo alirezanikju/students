@@ -1,0 +1,35 @@
+body{
+    background-image: url(../bbblurry.svg);
+    background-size: cover;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    direction: rtl;
+}
+.person-description{
+    text-align: justify;
+}
+.box-card{
+    width: 30%;
+    height: 30%;
+}
+.scroll-box{
+    overflow-y: auto;
+height: 700px;
+
+}
+.scroll-box::-webkit-scrollbar{
+    width: 5px;
+}
+.scroll-box::-webkit-scrollbar-track{
+    width: 5px;
+    border-radius: 5px;
+    background-color: #4A55A2;
+}
+.scroll-box::-webkit-scrollbar-thumb{
+    width: 5px;
+
+    border-radius: 5px;
+   background-color: #7895CB;
+}
