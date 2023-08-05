@@ -1,7 +1,9 @@
 <?php
 
 require_once "inc/actions.php";
-
+require_once "class/student.class.php";
+$students = new Student();
+$students = $students->getStudent();
 ?>
 
 <html lang="en">
@@ -40,10 +42,13 @@ require_once "inc/actions.php";
         <th>سن</th>
         <th>حذف و ویرایش</th>
     </tr>
+
+    <?php foreach ($students as $row){  ?>
     <tr>
-        <td>زهرا</td>
-        <td>دینی</td>
-        <td>12</td>
+        <td><?php echo $row['name']; ?></td>
+        <td><?php echo $row['age']; ?></td>
+        <td><?php echo $row['field']; ?></td>
+
         <td class="d-flex">
             <div>
                 <button type="button" class="btn btn-light" data-bs-toggle="modal"
@@ -59,179 +64,34 @@ require_once "inc/actions.php";
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
 
-                            <div class="modal-body">
-                                <input type="text" name="" value="نام" id="">
-                                <input type="text" name="" value="سن" id="">
-                                <input type="text" name="" value="رشته تحصیلی" id="">
-                            </div>
+                            <form action="index.php" method="post">
+                                <div class="modal-body">
+                                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                    <input type="text" name="name" placeholder="نام"  value="<?php echo $row['name']; ?>">
+                                    <input type="text" name="age" placeholder="سن"  value="<?php echo $row['age']; ?>">
+                                    <input type="text" name="field" placeholder="رشته تحصیلی"  value="<?php echo $row['field']; ?>">
+                                </div>
 
-                            <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">بستن</button>
-                                <button type="button" class="btn btn-primary">سیو</button>
-                            </div>
+                                <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">بستن</button>
+                                    <input type="submit" value="ذخیره" name="update" class="btn btn-primary">
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
                 <!-- /small modal -->
             </div>
             <div>
-                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal_small">حذف
-                    <i class="ph-play-circle ms-2"></i></button>
+                <a href="?deleteStudent=<?php echo $row['id']; ?>" type="button" class="btn btn-light">حذف
+                    <i class="ph-play-circle ms-2"></i></a>
 
-                <!-- Small modal -->
-                <div id="modal_small" class="modal fade" tabindex="-1">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Small modal</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div>
 
-                            <div class="modal-body">
-                                <input type="text" name="" value="نام" id="">
-                                <input type="text" name="" value="سن" id="">
-                                <input type="text" name="" value="رشته تحصیلی" id="">
-                            </div>
-
-                            <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">بستن</button>
-                                <button type="button" class="btn btn-primary">سیو</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /small modal -->
             </div>
         </td>
     </tr>
-    <tr>
-        <td>سمیرا</td>
-        <td>دینی</td>
-        <td>12</td>
-        <td class="d-flex">
-            <div>
-                <button type="button" class="btn btn-light" data-bs-toggle="modal"
-                        data-bs-target="#modal_small">ویرایش
-                    <i class="ph-play-circle ms-2"></i></button>
+    <?php } ?>
 
-                <!-- Small modal -->
-                <div id="modal_small" class="modal fade" tabindex="-1">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Small modal</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div>
-
-                            <div class="modal-body">
-                                <input type="text" name="" value="نام" id="">
-                                <input type="text" name="" value="سن" id="">
-                                <input type="text" name="" value="رشته تحصیلی" id="">
-                            </div>
-
-                            <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">بستن</button>
-                                <button type="button" class="btn btn-primary">سیو</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /small modal -->
-            </div>
-            <div>
-                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal_small">حذف
-                    <i class="ph-play-circle ms-2"></i></button>
-
-                <!-- Small modal -->
-                <div id="modal_small" class="modal fade" tabindex="-1">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Small modal</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div>
-
-                            <div class="modal-body">
-                                <input type="text" name="" value="نام" id="">
-                                <input type="text" name="" value="سن" id="">
-                                <input type="text" name="" value="رشته تحصیلی" id="">
-                            </div>
-
-                            <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">بستن</button>
-                                <button type="button" class="btn btn-primary">سیو</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /small modal -->
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>اصغر</td>
-        <td>دینی</td>
-        <td>12</td>
-        <td class="d-flex">
-            <div>
-                <button type="button" class="btn btn-light" data-bs-toggle="modal"
-                        data-bs-target="#modal_small">ویرایش
-                    <i class="ph-play-circle ms-2"></i></button>
-
-                <!-- Small modal -->
-                <div id="modal_small" class="modal fade" tabindex="-1">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Small modal</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div>
-
-                            <div class="modal-body">
-                                <input type="text" name="" value="نام" id="">
-                                <input type="text" name="" value="سن" id="">
-                                <input type="text" name="" value="رشته تحصیلی" id="">
-                            </div>
-
-                            <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">بستن</button>
-                                <button type="button" class="btn btn-primary">سیو</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /small modal -->
-            </div>
-            <div>
-                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal_small">حذف
-                    <i class="ph-play-circle ms-2"></i></button>
-
-                <!-- Small modal -->
-                <div id="modal_small" class="modal fade" tabindex="-1">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Small modal</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div>
-
-                            <div class="modal-body">
-                                <input type="text" name="" value="نام" id="">
-                                <input type="text" name="" value="سن" id="">
-                                <input type="text" name="" value="رشته تحصیلی" id="">
-                            </div>
-
-                            <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">بستن</button>
-                                <button type="button" class="btn btn-primary">سیو</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /small modal -->
-            </div>
-        </td>
-    </tr>
 
 </table>
 <hr />
